@@ -15,10 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('firstNames');
+            $table->string('lastName');
+            $table->string('idNumber');
+            $table->integer('grade')->nullable();
+            $table->char('section', 3)->nullable(); //For classes normally we have section A,B,C,D,etc.
+            $table->enum('role', ['student', 'staff', 'parent']); //This can be done with a different roles table and create a relation
+            $table->integer('parent_id')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('suspended')->default(false);
+            $table->json('suspension_info')->nullable(); //store date and reason for suspension in json format
             $table->rememberToken();
             $table->timestamps();
         });
