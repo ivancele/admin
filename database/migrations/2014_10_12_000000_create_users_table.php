@@ -15,13 +15,14 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
             $table->string('firstNames');
             $table->string('lastName');
             $table->string('idNumber');
             $table->integer('grade')->nullable();
             $table->char('section', 3)->nullable(); //For classes normally we have section A,B,C,D,etc.
             $table->enum('role', ['student', 'staff', 'parent']); //This can be done with a different roles table and create a relation
-            $table->integer('parent_id')->nullable();
+            $table->string('parent_id')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
