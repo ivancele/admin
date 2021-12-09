@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Subject;
 use Illuminate\Database\Seeder;
 
 class SubjectSeeder extends Seeder
@@ -34,7 +35,7 @@ class SubjectSeeder extends Seeder
             'Life Orientation' => 'life-or',
         ];
 
-        foreach ($subject as $subject => $code) {
+        foreach ($subjects as $subject => $code) {
             Subject::create([
                 'name' => $subject,
                 'code' => $code,

@@ -25,21 +25,21 @@ class UserSeeder extends Seeder
             'grade' => null,
         ]);
        //create 10 just random users
-        User::factory(10)->create();
+        // User::factory(10)->create();
 
-        //create 10 specific students
-        User::factory(10)->create([
+        //create students
+        User::factory(20)->create([
             'role' => 'student',
         ]);
 
         //create 10 suspended students
         User::factory(10)->create([
             'role' => 'student',
-            'suspended' => 'true',
+            'suspended' => true,
         ]);
 
         //create 15 parents
-        User::factory(10)->create([
+        User::factory(15)->create([
             'role' => 'parent',
             'section' => null,
             'grade' => null,

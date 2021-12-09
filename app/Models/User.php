@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -60,4 +60,30 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($password);
     }
+
+    public function scopeSuspended($query)
+    {
+        return $query->where('suspended', false);
+    }
+
+    public function scopeStudent($query)
+    {
+        return $query->where('role', 'student');
+    }
+
+    public function scopeParent($query)
+    {
+        return $query->where('role', 'parent');
+    }
+
+    public function isStaff()
+    {
+        return $this->role == 'staff';
+    }
+
+    public function isParent()
+    {
+        return $this->role == 'parent';
+    }
+
 }
