@@ -6,3 +6,5 @@ To get started, you can clone this repo, set the db credentials on the .env file
 
 A user by default is assigned a 'student' role
 There are 2 more possible roles (staff and parent)
+
+User `ivan@portal.test` password is just `password`
